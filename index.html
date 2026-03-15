@@ -1,482 +1,330 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Musa Abdulmumin — Geologist & Digital Innovator</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-
 <style>
-
-:root{
---sand:#e8dcc8;
---clay:#c4a882;
---earth:#8b6f47;
---dark:#1a1410;
---accent:#d4622a;
-}
-
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-
-body{
-background:var(--dark);
-color:var(--sand);
-font-family:'Cormorant Garamond',serif;
-font-size:18px;
-line-height:1.7;
-}
-
-/* NAV */
-
-nav{
-position:fixed;
-top:0;
-left:0;
-right:0;
-z-index:100;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:1.2rem 3rem;
-background:rgba(26,20,16,0.92);
-backdrop-filter:blur(10px);
-}
-
-.nav-logo{
-font-family:'DM Mono',monospace;
-letter-spacing:0.2em;
-text-transform:uppercase;
-font-size:.9rem;
-color:var(--clay);
-}
-
-.nav-links{
-display:flex;
-gap:2rem;
-list-style:none;
-flex-wrap:wrap;
-}
-
-.nav-links a{
-text-decoration:none;
-color:var(--sand);
-font-family:'DM Mono',monospace;
-font-size:.75rem;
-letter-spacing:.15em;
-text-transform:uppercase;
-opacity:.7;
-}
-
-.nav-links a:hover{
-opacity:1;
-color:var(--clay);
-}
-
-/* HERO */
-
-#home{
-min-height:100vh;
-display:flex;
-align-items:flex-end;
-padding:0 3rem 5rem;
-position:relative;
-}
-
-.hero-photo{
-position:absolute;
-right:3rem;
-top:50%;
-transform:translateY(-50%);
-width:360px;
-height:480px;
-object-fit:cover;
-filter:grayscale(30%) sepia(20%);
-border:1px solid rgba(196,168,130,.2);
-}
-
-.hero-content{
-max-width:600px;
-}
-
-.hero-tag{
-font-family:'DM Mono',monospace;
-font-size:.7rem;
-letter-spacing:.25em;
-text-transform:uppercase;
-color:var(--accent);
-margin-bottom:1.5rem;
-}
-
-h1{
-font-size:clamp(3rem,7vw,5rem);
-font-weight:300;
-line-height:1.05;
-margin-bottom:1rem;
-}
-
-.hero-sub{
-font-style:italic;
-opacity:.7;
-margin-bottom:2rem;
-}
-
-.hero-cta{
-font-family:'DM Mono',monospace;
-text-decoration:none;
-color:var(--sand);
-border-bottom:1px solid var(--clay);
-padding-bottom:4px;
-}
-
-/* SECTIONS */
-
-section{
-padding:7rem 3rem;
-max-width:1100px;
-margin:auto;
-}
-
-.section-label{
-font-family:'DM Mono',monospace;
-font-size:.7rem;
-letter-spacing:.25em;
-text-transform:uppercase;
-color:var(--accent);
-margin-bottom:2rem;
-}
-
-h2{
-font-size:2.6rem;
-font-weight:300;
-margin-bottom:1rem;
-}
-
-/* ABOUT */
-
-.about-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:4rem;
-}
-
-.about-photo img{
-width:100%;
-aspect-ratio:4/5;
-object-fit:cover;
-filter:grayscale(20%) sepia(15%);
-border:1px solid rgba(196,168,130,.15);
-}
-
-.tags{
-display:flex;
-flex-wrap:wrap;
-gap:.5rem;
-margin-top:1.5rem;
-}
-
-.tag{
-font-family:'DM Mono',monospace;
-font-size:.65rem;
-border:1px solid rgba(196,168,130,.25);
-padding:.3rem .7rem;
-}
-
-/* PROJECTS */
-
-.projects-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:2rem;
-}
-
-.project-card{
-background:rgba(196,168,130,.05);
-padding:2rem;
-border:1px solid rgba(196,168,130,.08);
-}
-
-.project-img{
-width:100%;
-aspect-ratio:16/9;
-object-fit:cover;
-margin-bottom:1rem;
-filter:grayscale(30%) sepia(20%);
-transition:transform .4s ease;
-}
-
-.project-card:hover .project-img{
-transform:scale(1.05);
-}
-
-.project-card h3{
-margin-bottom:.5rem;
-}
-
-/* STORIES */
-
-.story-item{
-display:grid;
-grid-template-columns:1fr 1.4fr;
-gap:2rem;
-padding:2rem 0;
-border-top:1px solid rgba(196,168,130,.1);
-}
-
-.story-photo{
-width:100%;
-aspect-ratio:4/3;
-object-fit:cover;
-filter:grayscale(25%) sepia(15%);
-}
-
-.story-meta{
-font-family:'DM Mono',monospace;
-font-size:.6rem;
-letter-spacing:.2em;
-color:var(--accent);
-margin-bottom:.6rem;
-}
-
-/* CONTACT */
-
-#contact{
-text-align:center;
-}
-
-.contact-links{
-display:flex;
-justify-content:center;
-gap:2.5rem;
-flex-wrap:wrap;
-margin-top:2rem;
-}
-
-.contact-link{
-text-decoration:none;
-color:var(--sand);
-display:flex;
-flex-direction:column;
-align-items:center;
-gap:.3rem;
-}
-
-.contact-link-label{
-font-family:'DM Mono',monospace;
-font-size:.6rem;
-letter-spacing:.2em;
-color:var(--accent);
-}
-
-footer{
-border-top:1px solid rgba(196,168,130,.1);
-padding:2rem;
-text-align:center;
-font-family:'DM Mono',monospace;
-font-size:.6rem;
-letter-spacing:.15em;
-opacity:.5;
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-.hero-photo{display:none;}
-
-.about-grid{
-grid-template-columns:1fr;
-}
-
-.projects-grid{
-grid-template-columns:1fr;
-}
-
-.story-item{
-grid-template-columns:1fr;
-}
-
-}
-
+  :root {
+    --sand: #e8dcc8;
+    --clay: #c4a882;
+    --earth: #8b6f47;
+    --dark: #1a1410;
+    --accent: #d4622a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--dark);
+    color:var(--sand);
+    font-family:'Cormorant Garamond',serif;
+    font-size:18px;
+    line-height:1.7;
+    cursor: default;
+  }
+  nav{
+    position:fixed; top:0; left:0; right:0;
+    z-index:100;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1.2rem 3rem;
+    background: rgba(26,20,16,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid rgba(196,168,130,0.15);
+  }
+  .nav-logo{
+    font-family:'DM Mono',monospace;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    font-size:1rem;
+    color:var(--clay);
+  }
+  .nav-links{
+    display:flex; gap:2.5rem; list-style:none;
+  }
+  .nav-links a{
+    color:var(--sand);
+    text-decoration:none;
+    font-family:'DM Mono',monospace;
+    font-size:.75rem;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    opacity:.7;
+    transition: opacity 0.3s, color 0.3s;
+  }
+  .nav-links a:hover{opacity:1; color:var(--clay);}
+  #home{
+    min-height:100vh;
+    display:flex;
+    align-items:flex-end;
+    padding:0 3rem 5rem;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute; inset:0;
+    background: radial-gradient(ellipse at 70% 40%, rgba(196,168,130,0.08) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(212,98,42,0.06) 0%, transparent 50%);
+  }
+  .hero-photo{
+    position:absolute;
+    right:3rem;
+    top:50%;
+    transform:translateY(-50%);
+    width:360px;
+    height:480px;
+    object-fit:cover;
+    filter:grayscale(30%) sepia(20%);
+    border:1px solid rgba(196,168,130,0.2);
+    opacity:0.85;
+  }
+  .hero-content{
+    position:relative;
+    z-index:2;
+    max-width:600px;
+  }
+  .hero-tag{
+    font-family:'DM Mono',monospace;
+    font-size:.7rem;
+    letter-spacing:.25em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:1.5rem;
+    display:flex;
+    align-items:center;
+    gap:.8rem;
+  }
+  .hero-tag::before{
+    content:'';
+    display:block;
+    width:2rem;
+    height:1px;
+    background:var(--accent);
+  }
+  h1{
+    font-size:clamp(3rem,7vw,5.5rem);
+    font-weight:300;
+    line-height:1.05;
+    margin-bottom:1.5rem;
+  }
+  h1 em{font-style:italic; color:var(--clay);}
+  .hero-sub{
+    font-size:1.1rem;
+    color:rgba(232,220,200,0.65);
+    font-weight:300;
+    max-width:420px;
+    margin-bottom:2.5rem;
+    font-style:italic;
+  }
+  .hero-cta{
+    display:inline-flex;
+    align-items:center;
+    gap:.8rem;
+    color:var(--sand);
+    text-decoration:none;
+    font-family:'DM Mono',monospace;
+    font-size:.75rem;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    border-bottom:1px solid var(--clay);
+    padding-bottom:.3rem;
+    transition:color 0.3s,border-color 0.3s;
+  }
+  .hero-cta:hover{color:var(--clay);}
+  section{
+    padding:7rem 3rem;
+    max-width:1100px;
+    margin:0 auto;
+  }
+  .section-label{
+    font-family:'DM Mono',monospace;
+    font-size:.65rem;
+    letter-spacing:.3em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:3rem;
+    display:flex;
+    align-items:center;
+    gap:1rem;
+  }
+  .section-label::after{
+    content:'';
+    flex:1;
+    height:1px;
+    background:rgba(196,168,130,0.15);
+    max-width:120px;
+  }
+  h2{
+    font-size:clamp(2rem,4vw,3rem);
+    font-weight:300;
+    margin-bottom:2rem;
+    line-height:1.2;
+  }
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:5rem;}
+  .about-text p{color:rgba(232,220,200,0.75); margin-bottom:1.2rem; font-size:1.05rem; font-weight:300;}
+  .about-text p strong{color:var(--clay); font-weight:400;}
+  .about-photo img{width:100%; aspect-ratio:4/5; object-fit:cover; filter:grayscale(20%) sepia(15%); border:1px solid rgba(196,168,130,0.15);}
+  .about-caption{font-family:'DM Mono',monospace; font-size:.65rem; letter-spacing:.1em; color:var(--clay); margin-top:.8rem; opacity:.6; font-style:italic;}
+  .tags{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:2rem;}
+  .tag{font-family:'DM Mono',monospace; font-size:.65rem; letter-spacing:.1em; text-transform:uppercase; color:var(--clay); border:1px solid rgba(196,168,130,0.25); padding:.3rem .8rem;}
+  .projects-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-top:1rem;}
+  .project-card{background:rgba(196,168,130,0.04); padding:2.5rem; border:1px solid rgba(196,168,130,0.08);}
+  .project-card:hover{background:rgba(196,168,130,0.08); border-color:rgba(196,168,130,0.2);}
+  .project-img{width:100%; aspect-ratio:16/9; object-fit:cover; margin-bottom:1.5rem; filter:grayscale(30%) sepia(20%); border:1px solid rgba(196,168,130,0.1);}
+  .project-number{font-family:'DM Mono',monospace; font-size:.6rem; letter-spacing:.2em; color:var(--accent); margin-bottom:1rem; opacity:.7;}
+  .project-card h3{font-size:1.4rem; font-weight:400; margin-bottom:.8rem; line-height:1.2;}
+  .project-card p{font-size:.9rem; color:rgba(232,220,200,0.6); font-weight:300; line-height:1.6; margin-bottom:1.5rem;}
+  .project-link{font-family:'DM Mono',monospace; font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:var(--clay); text-decoration:none; border-bottom:1px solid rgba(196,168,130,0.3); padding-bottom:.15rem; transition:color 0.3s;}
+  .project-link:hover{color:var(--sand);}
+  .stories-list{display:flex; flex-direction:column; gap:0;}
+  .story-item{display:grid; grid-template-columns:1fr 1.4fr; gap:0; border-top:1px solid rgba(196,168,130,0.1); padding:3rem 0; transition:background 0.3s;}
+  .story-item:last-child{border-bottom:1px solid rgba(196,168,130,0.1);}
+  .story-photo{width:100%; aspect-ratio:4/3; object-fit:cover; filter:grayscale(25%) sepia(15%); border:1px solid rgba(196,168,130,0.1); margin-right:3rem;}
+  .story-content{padding-left:3rem; display:flex; flex-direction:column; justify-content:center;}
+  .story-content h3{font-size:1.6rem; font-weight:300; margin-bottom:1rem; line-height:1.2;}
+  .story-content p{font-size:.95rem; color:rgba(232,220,200,0.65); font-weight:300; line-height:1.7;}
+  .story-meta{font-family:'DM Mono',monospace; font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); margin-bottom:1rem; opacity:.8;}
+  #contact{text-align:center;}
+  .contact-links{display:flex; justify-content:center; gap:3rem; flex-wrap:wrap;}
+  .contact-link{display:flex; flex-direction:column; align-items:center; gap:.4rem; text-decoration:none; color:var(--sand); transition:color 0.3s;}
+  .contact-link:hover{color:var(--clay);}
+  .contact-link-label{font-family:'DM Mono',monospace; font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); opacity:.7;}
+  .contact-link-value{font-size:1rem; font-weight:300;}
+  footer{border-top:1px solid rgba(196,168,130,0.1); padding:2rem 3rem; display:flex; justify-content:space-between; align-items:center; max-width:1100px; margin:0 auto;}
+  footer p{font-family:'DM Mono',monospace; font-size:.6rem; letter-spacing:.15em; color:rgba(196,168,130,0.35); text-transform:uppercase;}
+  @media (max-width: 900px){
+    .about-grid{grid-template-columns:1fr; gap:3rem;}
+    .projects-grid{grid-template-columns:1fr;}
+    .story-item{grid-template-columns:1fr;}
+    .story-photo{margin-right:0; margin-bottom:1.5rem;}
+    .story-content{padding-left:0;}
+    footer{flex-direction:column; gap:.5rem; text-align:center;}
+  }
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <nav>
-<div class="nav-logo">Musa Abdulmumin</div>
-<ul class="nav-links">
-<li><a href="#about">About</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#stories">Field Stories</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
+  <div class="nav-logo">Musa Abdulmumin</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#stories">Field Stories</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </nav>
 
+<!-- HERO -->
 <section id="home">
-
-<img src="images/hero.jpg" alt="Musa Abdulmumin" class="hero-photo">
-
-<div class="hero-content">
-<div class="hero-tag">Niger State · Nigeria</div>
-<h1>Musa<br><em>Abdulmumin</em></h1>
-<p class="hero-sub">Geologist · Renewable Energy Fellow · Digital Innovator</p>
-<a href="#about" class="hero-cta">Explore my work →</a>
-</div>
-
+  <div class="hero-bg"></div>
+  <img src="images/hero.jpg" alt="Musa Abdulmumin" class="hero-photo">
+  <div class="hero-content">
+    <div class="hero-tag">Niger State · Nigeria</div>
+    <h1>Musa<br><em>Abdulmumin</em></h1>
+    <p class="hero-sub">Geologist · Renewable Energy Fellow · Digital Innovator</p>
+    <a href="#about" class="hero-cta">Explore my work →</a>
+  </div>
 </section>
 
+<!-- ABOUT -->
 <section id="about">
-
-<div class="section-label">About</div>
-
-<div class="about-grid">
-
-<div>
-
-<h2>Science, technology,<br><em>and community</em></h2>
-
-<p>I am a geologist from northern Nigeria interested in how science and technology expand opportunity in underserved regions.</p>
-
-<p>I graduated as the overall best student with distinction from Abubakar Tatari Ali Polytechnic in Bauchi.</p>
-
-<p>I participated in the UNDP Digital for Youth Led Enterprise programme and the 3 Million Technical Talent initiative.</p>
-
-<div class="tags">
-
-<span class="tag">Geology</span>
-<span class="tag">Geospatial</span>
-<span class="tag">Renewable Energy</span>
-<span class="tag">AI & ML</span>
-<span class="tag">Healthcare Access</span>
-<span class="tag">Photography</span>
-
-</div>
-
-</div>
-
-<div class="about-photo">
-
-<img src="images/about.jpg" alt="Musa Abdulmumin">
-
-</div>
-
-</div>
-
+  <div class="section-label">About</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <h2>Science, technology,<br><em>and community.</em></h2>
+      <p>I am a geologist from northern Nigeria with a growing interest in how <strong>science and technology can expand opportunity</strong> in places often overlooked.</p>
+      <p>I graduated as the <strong>overall best student with distinction</strong> from Abubakar Tatari Ali Polytechnic in Bauchi.</p>
+      <p>I participated in the <strong>UNDP Digital for Youth Led Enterprise</strong> programme and the national 3 Million Technical Talent initiative.</p>
+      <div class="tags">
+        <span class="tag">Geology</span>
+        <span class="tag">Geospatial</span>
+        <span class="tag">Renewable Energy</span>
+        <span class="tag">AI & ML</span>
+        <span class="tag">Healthcare Access</span>
+        <span class="tag">Photography</span>
+      </div>
+    </div>
+    <div class="about-photo">
+      <img src="images/about.jpg" alt="Musa in the field">
+      <p class="about-caption">Musa Abdulmumin — Niger State, Nigeria</p>
+    </div>
+  </div>
 </section>
 
+<!-- PROJECTS -->
 <section id="projects">
-
-<div class="section-label">Projects</div>
-<h2>Work & initiatives</h2>
-
-<div class="projects-grid">
-
-<div class="project-card">
-<img src="images/tinder-health.jpg" class="project-img">
-<h3>Tinder Health</h3>
-<p>Digital healthcare navigation concept mapping health facilities across the Suleja–Abuja corridor.</p>
-</div>
-
-<div class="project-card">
-<img src="images/rock-communities.jpg" class="project-img">
-<h3>Moh Shotss</h3>
-<p>Photography initiative documenting landscapes and heritage spaces across northern Nigeria.</p>
-</div>
-
-<div class="project-card">
-<img src="images/geospatial.jpg" class="project-img">
-<h3>Geospatial Health Access</h3>
-<p>Hackathon project using geographic data to identify underserved medical regions.</p>
-</div>
-
-</div>
-
+  <div class="section-label">Projects</div>
+  <h2>Work & initiatives</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <img src="images/tinder-health.jpg" alt="Tinder Health" class="project-img">
+      <h3>Tinder Health</h3>
+      <p>A digital healthcare navigation concept helping patients find the right medical specialists. Mapped 125+ facilities across the Suleja–Abuja corridor.</p>
+      <a href="https://www.linkedin.com/company/tinder-health/" class="project-link" target="_blank">View Project →</a>
+    </div>
+    <div class="project-card">
+      <img src="images/rock-communities.jpg" alt="Moh Shotss Photography" class="project-img">
+      <div class="project-number">02 / Photography</div>
+      <h3>Moh Shotss</h3>
+      <p>A photography initiative documenting landscapes, heritage spaces, and communities across northern Nigeria.</p>
+      <a href="https://www.instagram.com/moshots.com.ng?igsh=aGIxYmExaTY1OHZz" class="project-link" target="_blank">View on Instagram →</a>
+    </div>
+    <div class="project-card">
+      <img src="images/geospatial.jpg" alt="Geospatial Health Access" class="project-img">
+      <div class="project-number">03 / Geospatial</div>
+      <h3>Geospatial Health Access</h3>
+      <p>A hackathon concept using geographic data to map health facilities and identify underserved areas.</p>
+      <a href="https://drive.google.com/file/d/1ViypDYOujgnLylxYFBNcm0UxaIRC6Zmt/view?usp=sharing" class="project-link" target="_blank">View Project →</a>
+    </div>
+  </div>
 </section>
 
+<!-- FIELD STORIES -->
 <section id="stories">
-
-<div class="section-label">Field Stories</div>
-<h2>From the ground</h2>
-
-<div class="story-item">
-
-<img src="images/tafawa-balewa.jpg" class="story-photo">
-
-<div>
-<div class="story-meta">Bauchi State · Heritage</div>
-<h3>Visiting the Tomb of Tafawa Balewa</h3>
-<p>Documenting the historic resting place of Nigeria's first Prime Minister.</p>
-</div>
-
-</div>
-
-<div class="story-item">
-
-<img src="images/rock-communities.jpg" class="story-photo">
-
-<div>
-<div class="story-meta">Bauchi State · Geography</div>
-<h3>Communities on Rock Formations</h3>
-<p>Observing how local communities adapt to landscapes shaped by ancient geology.</p>
-</div>
-
-</div>
-
-<div class="story-item">
-
-<img src="images/energy.jpg" class="story-photo">
-
-<div>
-<div class="story-meta">Northern Nigeria · Energy</div>
-<h3>Energy Access in Rural Areas</h3>
-<p>Field observations about the need for decentralized renewable energy systems.</p>
-</div>
-
-</div>
-
+  <div class="section-label">Field Stories</div>
+  <h2>From the <em>ground</em></h2>
+  <div class="stories-list">
+    <div class="story-item">
+      <img src="images/tafawa-balewa.jpg" alt="Tafawa Balewa Tomb" class="story-photo">
+      <div class="story-content">
+        <div class="story-meta">Bauchi State · Heritage</div>
+        <h3>Visiting the Tomb of Tafawa Balewa</h3>
+        <p>Documenting the historic site of Nigeria's first Prime Minister.</p>
+      </div>
+    </div>
+    <div class="story-item">
+      <img src="images/rock-communities.jpg" alt="Rock Communities" class="story-photo">
+      <div class="story-content">
+        <div class="story-meta">Bauchi State · Geography</div>
+        <h3>Communities Living on Rock Formations</h3>
+        <p>Documenting how families adapt to living on large rock formations in Bauchi State.</p>
+      </div>
+    </div>
+    <div class="story-item">
+      <img src="images/energy.jpg" alt="Rural Energy Access" class="story-photo">
+      <div class="story-content">
+        <div class="story-meta">Northern Nigeria · Energy</div>
+        <h3>Observing Energy Access in Rural Areas</h3>
+        <p>Field observations on decentralized energy systems and rural development.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
-
-<div class="section-label">Contact</div>
-<h2>Let's connect</h2>
-
-<div class="contact-links">
-
-<a href="mailto:your@email.com" class="contact-link">
-<span class="contact-link-label">Email</span>
-<span>your@email.com</span>
-</a>
-
-<a href="https://linkedin.com" class="contact-link">
-<span class="contact-link-label">LinkedIn</span>
-<span>LinkedIn</span>
-</a>
-
-<a href="https://github.com" class="contact-link">
-<span class="contact-link-label">GitHub</span>
-<span>GitHub</span>
-</a>
-
-<a href="tel:+2349024787764" class="contact-link">
-<span class="contact-link-label">Phone</span>
-<span>+234 902 478 7764</span>
-</a>
-
-</div>
-
-</section>
-
-<footer>
-
-<p>© 2026 Musa Abdulmumin</p>
-<p>Built with curiosity & quiet ambition</p>
-
-</footer>
-
-</body>
-</html>
-```
+  <div class="section-label" style="justify-content:center;">Contact</div>
+  <h2>Let's connect</h2>
+  <div class="contact-links">
+    <a href="mailto:your@email.com" class="contact-link">
+      <span class="contact-link-label">Email</span>
+      <span class="contact-link-value">your@email.com</span>
+    </a>
+    <a href="https://linkedin.com/in/musa-abdulmumin-6046032ba" target="_blank" class="contact-link">
+      <span class="contact-link-label">LinkedIn</span>
+      <span class="contact-link-value">musa-abdulmumin</span>
+    </a>
+    <a href="https://github.com/Mohfinest
