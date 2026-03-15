@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Musa Abdulmumin — Geologist & Digital Innovator</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #e8dcc8;
+    --clay: #c4a882;
+    --earth: #8b6f47;
+    --dark: #1a1410;
+    --charcoal: #2d2520;
+    --smoke: #f4efe8;
+    --accent: #d4622a;
+    --text: #3a2e25;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--sand);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.7;
+    cursor: default;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(26, 20, 16, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(196,168,130,0.15);
+  }
+
+  .nav-logo {
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-family: 'DM Mono', monospace;
+    font-weight: 300;
+    color: var(--clay);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--sand);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    transition: opacity 0.3s, color 0.3s;
+  }
+
+  .nav-links a:hover { opacity: 1; color: var(--clay); }
+
+  /* HERO */
+  #home {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 3rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 70% 40%, rgba(196,168,130,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 80%, rgba(212,98,42,0.06) 0%, transparent 50%);
+  }
+
+  /* HERO PHOTO — replace src with your actual photo */
+  .hero-photo {
+    position: absolute;
+    right: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 360px;
+    height: 480px;
+    object-fit: cover;
+    filter: grayscale(30%) sepia(20%);
+    border: 1px solid rgba(196,168,130,0.2);
+    opacity: 0.85;
+  }
+
+  .hero-photo-placeholder {
+    position: absolute;
+    right: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 360px;
+    height: 480px;
+    background: rgba(196,168,130,0.05);
+    border: 1px dashed rgba(196,168,130,0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--clay);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--clay);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: rgba(232,220,200,0.65);
+    font-weight: 300;
+    max-width: 420px;
+    margin-bottom: 2.5rem;
+    font-style: italic;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--sand);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--clay);
+    padding-bottom: 0.3rem;
+    transition: color 0.3s, border-color 0.3s;
+  }
+
+  .hero-cta:hover { color: var(--clay); }
+
+  /* SECTIONS */
+  section {
+    padding: 7rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(196,168,130,0.15);
+    max-width: 120px;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  /* ABOUT */
+  #about {
+    border-top: 1px solid rgba(196,168,130,0.1);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: rgba(232,220,200,0.75);
+    font-size: 1.05rem;
+    margin-bottom: 1.2rem;
+    font-weight: 300;
+  }
+
+  .about-text p strong {
+    color: var(--clay);
+    font-weight: 400;
+  }
+
+  .about-photo {
+    position: relative;
+  }
+
+  /* ABOUT PHOTO — replace src with your actual photo */
+  .about-photo img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    filter: grayscale(20%) sepia(15%);
+    border: 1px solid rgba(196,168,130,0.15);
+  }
+
+  .about-photo-placeholder {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: rgba(196,168,130,0.04);
+    border: 1px dashed rgba(196,168,130,0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--clay);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .about-caption {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--clay);
+    margin-top: 0.8rem;
+    opacity: 0.6;
+    font-style: italic;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--clay);
+    border: 1px solid rgba(196,168,130,0.25);
+    padding: 0.3rem 0.8rem;
+  }
+
+  /* PROJECTS */
+  #projects {
+    border-top: 1px solid rgba(196,168,130,0.1);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 1rem;
+  }
+
+  .project-card {
+    background: rgba(196,168,130,0.04);
+    padding: 2.5rem;
+    border: 1px solid rgba(196,168,130,0.08);
+    transition: background 0.3s, border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card:hover {
+    background: rgba(196,168,130,0.08);
+    border-color: rgba(196,168,130,0.2);
+  }
+
+  /* PROJECT IMAGE — replace src with your actual image */
+  .project-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    filter: grayscale(30%) sepia(20%);
+    border: 1px solid rgba(196,168,130,0.1);
+  }
+
+  .project-img-placeholder {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: rgba(196,168,130,0.06);
+    border: 1px dashed rgba(196,168,130,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    margin-bottom: 1.5rem;
+    color: var(--clay);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+  }
+
+  .project-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    opacity: 0.7;
+  }
+
+  .project-card h3 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+  }
+
+  .project-card p {
+    font-size: 0.9rem;
+    color: rgba(232,220,200,0.6);
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--clay);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(196,168,130,0.3);
+    padding-bottom: 0.15rem;
+    transition: color 0.3s;
+  }
+
+  .project-link:hover { color: var(--sand); }
+
+  /* FIELD STORIES */
+  #stories {
+    border-top: 1px solid rgba(196,168,130,0.1);
+  }
+
+  .stories-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .story-item {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 0;
+    border-top: 1px solid rgba(196,168,130,0.1);
+    padding: 3rem 0;
+    transition: background 0.3s;
+  }
+
+  .story-item:last-child {
+    border-bottom: 1px solid rgba(196,168,130,0.1);
+  }
+
+  /* STORY PHOTO — replace src with your actual photo */
+  .story-photo {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    filter: grayscale(25%) sepia(15%);
+    border: 1px solid rgba(196,168,130,0.1);
+    margin-right: 3rem;
+  }
+
+  .story-photo-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: rgba(196,168,130,0.04);
+    border: 1px dashed rgba(196,168,130,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    color: var(--clay);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-align: center;
+    margin-right: 3rem;
+  }
+
+  .story-content {
+    padding-left: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .story-content h3 {
+    font-size: 1.6rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .story-content p {
+    font-size: 0.95rem;
+    color: rgba(232,220,200,0.65);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .story-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    opacity: 0.8;
+  }
+
+  /* CONTACT */
+  #contact {
+    border-top: 1px solid rgba(196,168,130,0.1);
+    text-align: center;
+    padding-bottom: 6rem;
+  }
+
+  #contact h2 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+
+  .contact-sub {
+    color: rgba(232,220,200,0.5);
+    font-size: 1rem;
+    margin-bottom: 3.5rem;
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: var(--sand);
+    transition: color 0.3s;
+  }
+
+  .contact-link:hover { color: var(--clay); }
+
+  .contact-link-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    opacity: 0.7;
+  }
+
+  .contact-link-value {
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid rgba(196,168,130,0.1);
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: rgba(196,168,130,0.35);
+    text-transform: uppercase;
+  }
+
+  /* DIVIDER */
+  .rule {
+    width: 3rem;
+    height: 1px;
+    background: var(--clay);
+    opacity: 0.4;
+    margin: 2rem 0;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-content > * {
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-content .hero-tag { animation-delay: 0.1s; }
+  .hero-content h1 { animation-delay: 0.25s; }
+  .hero-content .hero-sub { animation-delay: 0.4s; }
+  .hero-content .hero-cta { animation-delay: 0.55s; }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--dark); }
+  ::-webkit-scrollbar-thumb { background: var(--earth); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    section { padding: 5rem 1.5rem; }
+    #home { padding: 0 1.5rem 4rem; }
+    .hero-photo, .hero-photo-placeholder { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .story-item { grid-template-columns: 1fr; }
+    .story-photo, .story-photo-placeholder { margin-right: 0; margin-bottom: 1.5rem; }
+    .story-content { padding-left: 0; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Musa Abdulmumin</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#stories">Field Stories</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+
+  <!-- 
+    HERO PHOTO: Replace the placeholder below with an <img> tag like this:
+    <img src="your-photo.jpg" alt="Musa Abdulmumin" class="hero-photo">
+  -->
+  <div class="hero-photo-placeholder">
+    📷 Add your photo here<br>
+    Replace with:<br>
+    &lt;img src="photo.jpg" class="hero-photo"&gt;
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-tag">Niger State · Nigeria</div>
+    <h1>Musa<br><em>Abdulmumin</em></h1>
+    <p class="hero-sub">Geologist · Renewable Energy Fellow · Digital Innovator</p>
+    <a href="#about" class="hero-cta">Explore my work →</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <h2>Science, technology,<br><em>and community.</em></h2>
+      <div class="rule"></div>
+      <p>I am a geologist from northern Nigeria with a growing interest in how <strong>science and technology can expand opportunity</strong> in places often overlooked.</p>
+      <p>I graduated as the <strong>overall best student with distinction</strong> from Abubakar Tatari Ali Polytechnic in Bauchi, where I developed a deep interest in applying data and geospatial thinking beyond traditional academic fields.</p>
+      <p>I have participated in the <strong>UNDP Digital for Youth Led Enterprise</strong> programme and the national 3 Million Technical Talent initiative, exploring artificial intelligence and machine learning. Currently I am a fellow in a <strong>renewable energy leadership programme</strong>, learning about distributed energy systems.</p>
+      <p>My long-term interest lies in combining science, technology, and local knowledge to develop ideas that contribute to more inclusive development.</p>
+      <div class="tags">
+        <span class="tag">Geology</span>
+        <span class="tag">Geospatial</span>
+        <span class="tag">Renewable Energy</span>
+        <span class="tag">AI & ML</span>
+        <span class="tag">Healthcare Access</span>
+        <span class="tag">Photography</span>
+      </div>
+    </div>
+    <div class="about-photo">
+      <!-- 
+        ABOUT PHOTO: Replace placeholder with:
+        <img src="about-photo.jpg" alt="Musa in the field" class="">
+      -->
+      <div class="about-photo-placeholder">
+        📷 Add a field photo here<br><br>
+        Replace with:<br>
+        &lt;img src="field-photo.jpg"&gt;
+      </div>
+      <p class="about-caption">Musa Abdulmumin — Niger State, Nigeria</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Projects</div>
+  <h2>Work &amp; <em>initiatives</em></h2>
+
+  <div class="projects-grid">
+
+    <!-- PROJECT 1 -->
+    <div class="project-card">
+      <!-- 
+        PROJECT IMAGE: Replace placeholder with:
+        <img src="tinder-health.jpg" alt="Tinder Health" class="project-img">
+      -->
+      <div class="project-img-placeholder">📷 Project image</div>
+      <div class="project-number">01 / Healthcare</div>
+      <h3>Tinder Health</h3>
+      <p>A digital healthcare navigation concept helping patients find the right medical specialists. Mapped 125+ facilities across the Suleja–Abuja corridor as part of the Health Path Niger pilot.</p>
+      <a href="https://www.linkedin.com/company/tinder-health/" class="project-link" target="_blank">View Project →</a>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="project-card">
+      <!-- 
+        PHOTO GALLERY LINK: Replace placeholder with a Moh Shotss image
+        <img src="moh-shotss.jpg" alt="Moh Shotss Photography" class="project-img">
+      -->
+      <div class="project-img-placeholder">📷 Photography sample</div>
+      <div class="project-number">02 / Photography</div>
+      <h3>Moh Shotss</h3>
+      <p>A photography initiative documenting landscapes, heritage spaces, and communities across northern Nigeria — preserving stories of places that carry historical and cultural significance.</p>
+      <a href="https://www.instagram.com/moshots.com.ng?igsh=aGIxYmExaTY1OHZz" class="project-link" target="_blank">View on Instagram →</a>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="project-card">
+      <!-- 
+        PROJECT IMAGE: Replace placeholder with:
+        <img src="geospatial.jpg" alt="Geospatial Health" class="project-img">
+      -->
+      <div class="project-img-placeholder">📷 Project image</div>
+      <div class="project-number">03 / Geospatial</div>
+      <h3>Geospatial Health Access</h3>
+      <p>A hackathon concept using geographic data to map health facilities and identify areas where people face long travel distances to access medical services. <em>First Runner-up, Dynamic Minds Hackathon.</em></p>
+      <a href="https://drive.google.com/file/d/1ViypDYOujgnLylxYFBNcm0UxaIRC6Zmt/view?usp=sharing" class="project-link" target="_blank">View Project →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- FIELD STORIES -->
+<section id="stories">
+  <div class="section-label">Field Stories</div>
+  <h2>From the <em>ground</em></h2>
+
+  <div class="stories-list">
+
+    <!-- STORY 1 -->
+    <div class="story-item">
+      <!-- 
+        STORY PHOTO: Replace placeholder with:
+        <img src="tafawa-balewa.jpg" alt="Tafawa Balewa Tomb" class="story-photo">
+      -->
+      <div class="story-photo-placeholder">
+        📷 Add photo of<br>Tafawa Balewa Tomb
+      </div>
+      <div class="story-content">
+        <div class="story-meta">Bauchi State · Heritage</div>
+        <h3>Visiting the Tomb of Tafawa Balewa</h3>
+        <p>During a visit to Bauchi State, I documented the historic site of Nigeria's first Prime Minister. Standing at the site reminded me how landscapes often hold layers of historical memory — places like this connect national history with local geography.</p>
+      </div>
+    </div>
+
+    <!-- STORY 2 -->
+    <div class="story-item">
+      <!-- 
+        STORY PHOTO: Replace placeholder with:
+        <img src="rock-communities.jpg" alt="Rock Communities" class="story-photo">
+      -->
+      <div class="story-photo-placeholder">
+        📷 Add photo of<br>Rock Communities
+      </div>
+      <div class="story-content">
+        <div class="story-meta">Bauchi State · Geography</div>
+        <h3>Communities Living on Rock Formations</h3>
+        <p>In parts of Bauchi State, families have lived for generations on large rock formations. Documenting these places revealed how people adapt to their environment and how geography shapes daily life in ways often overlooked in urban narratives.</p>
+      </div>
+    </div>
+
+    <!-- STORY 3 -->
+    <div class="story-item">
+      <!-- 
+        STORY PHOTO: Replace placeholder with:
+        <img src="energy-access.jpg" alt="Rural Energy Access" class="story-photo">
+      -->
+      <div class="story-photo-placeholder">
+        📷 Add photo from<br>Energy Fellowship
+      </div>
+      <div class="story-content">
+        <div class="story-meta">Northern Nigeria · Energy</div>
+        <h3>Observing Energy Access in Rural Areas</h3>
+        <p>Through my renewable energy fellowship and field observations, I have become increasingly interested in the role of decentralized energy systems. Access to reliable energy remains one of the most important foundations for education, healthcare, and economic activity.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label" style="justify-content:center;">Contact</div>
+  <h2>Let's connect</h2>
+  <p class="contact-sub">Open to collaborations, conversations, and opportunities.</p>
+
+  <div class="contact-links">
+    <a href="/cdn-cgi/l/email-protection#30515254455c5d455d595e5d090770575d51595c1e535f5d" class="contact-link">
+      <span class="contact-link-label">Email</span>
+      <span class="contact-link-value"><span class="__cf_email__" data-cfemail="02636066776e6f776f6b6c6f3b3542656f636b6e2c616d6f">[email&#160;protected]</span></span>
+    </a>
+    <a href="https://linkedin.com/in/musa-abdulmumin-6046032ba" target="_blank" class="contact-link">
+      <span class="contact-link-label">LinkedIn</span>
+      <span class="contact-link-value">musa-abdulmumin</span>
+    </a>
+    <a href="https://github.com/Mohfinest" target="_blank" class="contact-link">
+      <span class="contact-link-label">GitHub</span>
+      <span class="contact-link-value">github.com/Mohfinest</span>
+    </a>
+    <a href="tel:+2349024787764" class="contact-link">
+      <span class="contact-link-label">Phone</span>
+      <span class="contact-link-value">+234 902 478 7764</span>
+   
