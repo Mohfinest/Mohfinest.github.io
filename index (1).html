@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Musa Abdulmumin — Geologist & Digital Innovator</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #e8dcc8;
+    --clay: #c4a882;
+    --earth: #8b6f47;
+    --dark: #131009;
+    --charcoal: #1e1810;
+    --smoke: #f4efe8;
+    --accent: #d4622a;
+    --accent2: #a8874a;
+    --text: #3a2e25;
+    --muted: rgba(232,220,200,0.55);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--sand);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── GRAIN OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3.5rem;
+    background: rgba(19,16,9,0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(196,168,130,0.12);
+  }
+
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--clay);
+    font-weight: 300;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.8rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--sand);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    transition: opacity 0.3s, color 0.3s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--clay); }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 3.5rem 5.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 65% 35%, rgba(196,168,130,0.07) 0%, transparent 55%),
+      radial-gradient(ellipse at 15% 75%, rgba(212,98,42,0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at 85% 80%, rgba(139,111,71,0.04) 0%, transparent 40%);
+  }
+
+  .hero-photo {
+    position: absolute;
+    right: 3.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 340px;
+    height: 460px;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(25%) sepia(18%);
+    border: 1px solid rgba(196,168,130,0.18);
+    opacity: 0.88;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 580px;
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    animation: fadeUp 0.8s ease both 0.1s;
+  }
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 2.2rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-size: clamp(3.2rem, 7.5vw, 6rem);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.6rem;
+    animation: fadeUp 0.8s ease both 0.25s;
+  }
+  h1 em { font-style: italic; color: var(--clay); }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 400px;
+    margin-bottom: 0.8rem;
+    font-style: italic;
+    animation: fadeUp 0.8s ease both 0.35s;
+  }
+
+  .hero-tagline {
+    font-size: 0.88rem;
+    color: rgba(196,168,130,0.6);
+    font-family: 'DM Mono', monospace;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    margin-bottom: 2.8rem;
+    animation: fadeUp 0.8s ease both 0.42s;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--sand);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--clay);
+    padding-bottom: 0.3rem;
+    transition: color 0.3s, border-color 0.3s;
+    animation: fadeUp 0.8s ease both 0.55s;
+  }
+  .hero-cta:hover { color: var(--clay); }
+
+  /* ── RECOGNITIONS STRIP ── */
+  .recognitions {
+    background: rgba(196,168,130,0.04);
+    border-top: 1px solid rgba(196,168,130,0.1);
+    border-bottom: 1px solid rgba(196,168,130,0.1);
+    padding: 1.4rem 3.5rem;
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .recognitions::-webkit-scrollbar { display: none; }
+
+  .rec-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--clay);
+    opacity: 0.65;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .rec-item::before {
+    content: '◆';
+    font-size: 0.4rem;
+    color: var(--accent);
+    opacity: 0.7;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 7rem 3.5rem;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(196,168,130,0.12);
+    max-width: 100px;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    margin-bottom: 2rem;
+    line-height: 1.15;
+  }
+
+  .rule {
+    width: 3rem;
+    height: 1px;
+    background: var(--clay);
+    opacity: 0.35;
+    margin: 2rem 0;
+  }
+
+  /* ── ABOUT ── */
+  #about { border-top: 1px solid rgba(196,168,130,0.08); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin-bottom: 1.2rem;
+    font-weight: 300;
+  }
+  .about-text p strong { color: var(--clay); font-weight: 400; }
+
+  .about-photo img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(20%) sepia(15%);
+    border: 1px solid rgba(196,168,130,0.15);
+  }
+
+  .about-caption {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    color: var(--clay);
+    margin-top: 0.8rem;
+    opacity: 0.5;
+    font-style: italic;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--clay);
+    border: 1px solid rgba(196,168,130,0.22);
+    padding: 0.3rem 0.85rem;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .tag:hover {
+    background: rgba(196,168,130,0.08);
+    border-color: rgba(196,168,130,0.4);
+  }
+
+  /* ── AWARDS ROW ── */
+  .awards-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    margin-top: 3.5rem;
+    background: rgba(196,168,130,0.08);
+    border: 1px solid rgba(196,168,130,0.08);
+  }
+
+  .award-item {
+    background: var(--dark);
+    padding: 1.8rem 1.6rem;
+    transition: background 0.3s;
+  }
+  .award-item:hover { background: rgba(196,168,130,0.04); }
+
+  .award-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    opacity: 0.75;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  .award-title {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--sand);
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+  }
+
+  .award-org {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    color: var(--clay);
+    opacity: 0.6;
+    text-transform: uppercase;
+  }
+
+  /* ── PROJECTS ── */
+  #projects { border-top: 1px solid rgba(196,168,130,0.08); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin-top: 1rem;
+  }
+
+  .project-card {
+    background: rgba(196,168,130,0.03);
+    padding: 2.8rem;
+    border: 1px solid rgba(196,168,130,0.07);
+    transition: background 0.35s, border-color 0.35s;
+    position: relative;
+  }
+  .project-card:hover {
+    background: rgba(196,168,130,0.07);
+    border-color: rgba(196,168,130,0.18);
+  }
+
+  .project-card.featured {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .project-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    margin-bottom: 1.8rem;
+    filter: grayscale(25%) sepia(18%);
+    border: 1px solid rgba(196,168,130,0.1);
+  }
+
+  .project-card.featured .project-img {
+    aspect-ratio: 4/3;
+    margin-bottom: 0;
+  }
+
+  .project-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    opacity: 0.7;
+    text-transform: uppercase;
+  }
+
+  .project-card h3 {
+    font-size: 1.55rem;
+    font-weight: 400;
+    margin-bottom: 0.9rem;
+    line-height: 1.2;
+  }
+
+  .project-card p {
+    font-size: 0.92rem;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.65;
+    margin-bottom: 1.6rem;
+  }
+
+  .project-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--clay);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(196,168,130,0.3);
+    padding-bottom: 0.15rem;
+    transition: color 0.3s, border-color 0.3s;
+  }
+  .project-link:hover { color: var(--sand); border-color: var(--sand); }
+
+  /* ── FIELD STORIES ── */
+  #stories { border-top: 1px solid rgba(196,168,130,0.08); }
+
+  .story-item {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 0;
+    border-top: 1px solid rgba(196,168,130,0.08);
+    padding: 3.5rem 0;
+    transition: background 0.3s;
+  }
+  .story-item:last-child { border-bottom: 1px solid rgba(196,168,130,0.08); }
+
+  .story-photo {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    filter: grayscale(22%) sepia(15%);
+    border: 1px solid rgba(196,168,130,0.1);
+    margin-right: 3rem;
+    transition: filter 0.4s;
+  }
+  .story-item:hover .story-photo { filter: grayscale(10%) sepia(10%); }
+
+  .story-content {
+    padding-left: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .story-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    opacity: 0.8;
+  }
+
+  .story-content h3 {
+    font-size: 1.7rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .story-content p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* ── PRESS / RECOGNITION ── */
+  #recognition { border-top: 1px solid rgba(196,168,130,0.08); }
+
+  .press-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 1rem;
+  }
+
+  .press-item {
+    background: rgba(196,168,130,0.02);
+    border: 1px solid rgba(196,168,130,0.07);
+    padding: 2rem;
+    transition: background 0.3s;
+  }
+  .press-item:hover { background: rgba(196,168,130,0.06); }
+
+  .press-source {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    opacity: 0.75;
+    margin-bottom: 0.8rem;
+  }
+
+  .press-quote {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--sand);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    border-top: 1px solid rgba(196,168,130,0.08);
+    text-align: center;
+    padding-bottom: 7rem;
+  }
+
+  #contact h2 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+
+  .contact-sub {
+    color: var(--muted);
+    font-size: 1rem;
+    margin-bottom: 4rem;
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: var(--sand);
+    transition: color 0.3s;
+  }
+  .contact-link:hover { color: var(--clay); }
+
+  .contact-link-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    opacity: 0.7;
+  }
+
+  .contact-link-value {
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid rgba(196,168,130,0.08);
+    padding: 2rem 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+    color: rgba(196,168,130,0.28);
+    text-transform: uppercase;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--dark); }
+  ::-webkit-scrollbar-thumb { background: var(--earth); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    nav { padding: 1rem 1.8rem; }
+    .nav-links { gap: 1.8rem; }
+    section { padding: 5rem 1.8rem; }
+    #home { padding: 0 1.8rem 4rem; }
+    .hero-photo { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-column: auto; grid-template-columns: 1fr; }
+    .project-card.featured .project-img { aspect-ratio: 16/9; margin-bottom: 1.8rem; }
+    .story-item { grid-template-columns: 1fr; }
+    .story-photo { margin-right: 0; margin-bottom: 1.5rem; }
+    .story-content { padding-left: 0; }
+    .awards-row { grid-template-columns: 1fr; }
+    .press-grid { grid-template-columns: 1fr; }
+    .recognitions { padding: 1.2rem 1.8rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Musa Abdulmumin</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#stories">Field Stories</a></li>
+    <li><a href="#recognition">Recognition</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <img src="hero.jpg" alt="Musa Abdulmumin" class="hero-photo">
+  <div class="hero-content">
+    <div class="hero-tag">Suleja, Nigeria · Age 24</div>
+    <h1>Musa<br><em>Abdulmumin</em></h1>
+    <p class="hero-sub">Geologist · Digital Innovator · Visual Storyteller</p>
+    <p class="hero-tagline">Making invisible communities visible — one documentation at a time.</p>
+    <a href="#about" class="hero-cta">Explore my work →</a>
+  </div>
+</section>
+
+<!-- RECOGNITIONS STRIP -->
+<div class="recognitions">
+  <div class="rec-item">UNDP DYLE · First Runner-Up 2024</div>
+  <div class="rec-item">African Impact Challenge 2026 · Selected Cohort</div>
+  <div class="rec-item">Overall Best Graduating Student · ATAP Bauchi</div>
+  <div class="rec-item">SDGs Youth Policy Challenge 2026 · Applicant</div>
+  <div class="rec-item">Critical Pathways Fellowship · Utrecht University 2026</div>
+  <div class="rec-item">NextGen RESCO Intern · Rural Electrification Agency</div>
+  <div class="rec-item">African Digital Health Summit · Research Paper Accepted</div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <h2>Science, community,<br><em>and what gets left out.</em></h2>
+      <div class="rule"></div>
+      <p>I am a 24-year-old geologist from northern Nigeria with a distinction in Geology from Abubakar Tatari Ali Polytechnic, Bauchi — where I graduated as the <strong>overall best student</strong>. My work sits at the intersection of geoscience, digital innovation, and community documentation.</p>
+      <p>I co-founded <strong>Tinder Health</strong>, a digital healthcare navigation platform that has mapped 125+ facilities across the Suleja–Abuja corridor — addressing the gap between patients and the right care. Our research revealed that <strong>92.9% of referrals fail</strong> due to navigation gaps.</p>
+      <p>Through <strong>Moh Shotss</strong>, I spend time documenting landscapes, heritage spaces, and communities across northern Nigeria — particularly communities that exist outside every formal record. This work led to <strong>KundiMap</strong>, a community-driven documentation framework designed to connect invisible communities to the systems that should protect them.</p>
+      <p>Currently I am a <strong>NextGen RESCO Intern</strong> at Ashipa Electric through the Rural Electrification Agency, working on renewable energy deployment in underserved communities. I was selected for the <strong>African Impact Challenge 2026</strong> and recognised as <strong>First Runner-Up</strong> at the UNDP Digital for Youth-Led Enterprise programme.</p>
+      <div class="tags">
+        <span class="tag">Geology</span>
+        <span class="tag">Heritage Documentation</span>
+        <span class="tag">Renewable Energy</span>
+        <span class="tag">AI & Digital Innovation</span>
+        <span class="tag">Healthcare Navigation</span>
+        <span class="tag">Visual Storytelling</span>
+        <span class="tag">GIS Mapping</span>
+        <span class="tag">Community Development</span>
+      </div>
+    </div>
+    <div class="about-photo">
+      <img src="about.jpg" alt="Musa Abdulmumin in the field">
+      <p class="about-caption">Musa Abdulmumin — Northern Nigeria</p>
+    </div>
+  </div>
+
+  <!-- AWARDS -->
+  <div class="awards-row">
+    <div class="award-item">
+      <div class="award-year">2024</div>
+      <div class="award-title">First Runner-Up</div>
+      <div class="award-org">UNDP Digital for Youth-Led Enterprise (DYLE)</div>
+    </div>
+    <div class="award-item">
+      <div class="award-year">2026</div>
+      <div class="award-title">Selected Cohort Member</div>
+      <div class="award-org">African Impact Challenge 2026</div>
+    </div>
+    <div class="award-item">
+      <div class="award-year">2024</div>
+      <div class="award-title">Overall Best Graduating Student</div>
+      <div class="award-org">Abubakar Tatari Ali Polytechnic, Bauchi</div>
+    </div>
+    <div class="award-item">
+      <div class="award-year">2026</div>
+      <div class="award-title">Research Paper Accepted</div>
+      <div class="award-org">African Digital Health Summit</div>
+    </div>
+    <div class="award-item">
+      <div class="award-year">2026</div>
+      <div class="award-title">SDGs Youth Policy Challenge</div>
+      <div class="award-org">UNITAR · Renmin University of China</div>
+    </div>
+    <div class="award-item">
+      <div class="award-year">2026</div>
+      <div class="award-title">Fellowship Applicant</div>
+      <div class="award-org">Critical Pathways · Utrecht University</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Projects</div>
+  <h2>Work &amp; <em>initiatives</em></h2>
+
+  <div class="projects-grid">
+
+    <!-- KUNDMAP — FEATURED -->
+    <div class="project-card featured">
+      <img src="rock-communities.jpg" alt="KundiMap — Bauchi Rock Communities" class="project-img">
+      <div>
+        <div class="project-number">01 / Documentation Framework</div>
+        <h3>KundiMap</h3>
+        <p>A community-powered digital platform and policy framework designed to document, verify, and integrate living heritage communities into formal recognition systems. KundiMap transforms communities that do not exist on any map into digitally documented, policy-recognised, and economically included systems — starting with the rock-dwelling communities of Bauchi metropolis.</p>
+        <p style="font-size:0.82rem; color:rgba(196,168,130,0.5); font-style:italic; margin-bottom:1.6rem;">Submitted to SDGs Youth Public Policy Innovation Challenge 2026 · UNITAR / Renmin University of China</p>
+        <a href="https://drive.google.com/drive/folders/17uhWSPhbIbvojvldrR1ERYCkJBNgRF8F?usp=drive_link" class="project-link" target="_blank">View Project Materials →</a>
+      </div>
+    </div>
+
+    <!-- TINDER HEALTH -->
+    <div class="project-card">
+      <img src="tinder-health.jpg" alt="Tinder Health" class="project-img">
+      <div class="project-number">02 / Digital Health</div>
+      <h3>Tinder Health</h3>
+      <p>A digital healthcare navigation platform co-founded to close the referral gap between patients and the right specialists. Field research across 125+ mapped facilities in the Suleja–Abuja corridor revealed that 92.9% of referrals fail due to navigation failures — not resource shortages.</p>
+      <a href="https://www.linkedin.com/company/tinder-health/" class="project-link" target="_blank">View on LinkedIn →</a>
+    </div>
+
+    <!-- MOH SHOTSS -->
+    <div class="project-card">
+      <img src="rock-communities.jpg" alt="Moh Shotss Photography" class="project-img">
+      <div class="project-number">03 / Visual Documentation</div>
+      <h3>Moh Shotss</h3>
+      <p>A photography initiative documenting landscapes, heritage communities, and daily life across northern Nigeria. The archive has become the primary field evidence base for KundiMap — photographs that record what no official system has ever named.</p>
+      <a href="https://drive.google.com/drive/folders/1mwmGYv4mEdUTYUuFfAqBCQOvjKqSKQ1o?usp=sharing" class="project-link" target="_blank">View Photography Archive →</a>
+    </div>
+
+    <!-- GEOSPATIAL HEALTH -->
+    <div class="project-card">
+      <img src="geospatial.jpg" alt="Geospatial Health Access" class="project-img">
+      <div class="project-number">04 / Geospatial</div>
+      <h3>Geospatial Health Access</h3>
+      <p>A hackathon concept using geographic data to map health facilities and identify communities facing significant travel distances to access care. <em>First Runner-up, Dynamic Minds Hackathon.</em></p>
+      <a href="https://drive.google.com/file/d/1ViypDYOujgnLylxYFBNcm0UxaIRC6Zmt/view?usp=sharing" class="project-link" target="_blank">View Project →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- FIELD STORIES -->
+<section id="stories">
+  <div class="section-label">Field Stories</div>
+  <h2>From the <em>ground</em></h2>
+
+  <div class="stories-list">
+
+    <div class="story-item">
+      <img src="rock-communities.jpg" alt="Bauchi Rock Communities" class="story-photo">
+      <div class="story-content">
+        <div class="story-meta">Bauchi State · Heritage Documentation</div>
+        <h3>Communities Living Between Boulders</h3>
+        <p>The granite inselbergs of Bauchi metropolis stretch across hundreds of metres of urban landscape. Families have built homes between boulders, carved pathways into rock faces, and shaped their lives around a geological landscape of extraordinary cultural significance — for over thirty years, outside every formal record. This is where KundiMap began.</p>
+      </div>
+    </div>
+
+    <div class="story-item">
+      <img src="tafawa-balewa.jpg" alt="Tafawa Balewa Tomb" class="story-photo">
+      <div class="story-content">
+        <div class="story-meta">Bauchi State · National Heritage</div>
+        <h3>The Tomb of Nigeria's First Prime Minister</h3>
+        <p>Documenting the historic tomb of Sir Abubakar Tafawa Balewa in Bauchi — declared a national monument in 1979 — revealed the distance between formal recognition and public knowledge. The site exists in the registry. Its story does not exist in the minds of most young Nigerians. Documentation and recognition are not the same thing.</p>
+      </div>
+    </div>
+
+    <div class="story-item">
+      <img src="energy.jpg" alt="Rural Energy Access" class="story-photo">
+      <div class="story-content">
+        <div class="story-meta">Northern Nigeria · Renewable Energy</div>
+        <h3>Energy Access and the Communities Without It</h3>
+        <p>Through the NextGen RESCO internship at Ashipa Electric and the Rural Electrification Agency, I have been working at the intersection of distributed energy systems and the communities they are meant to serve. Reliable energy is not a luxury — it is the infrastructure on which education, healthcare, and economic agency are built.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- RECOGNITION -->
+<section id="recognition">
+  <div class="section-label">Recognition</div>
+  <h2>Selected for <em>what the work says</em></h2>
+
+  <div class="press-grid">
+    <div class="press-item">
+      <div class="press-source">UNDP · 2024</div>
+      <p class="press-quote">"First Runner-Up — Digital for Youth-Led Enterprise Programme. Commitment to community leadership and sustainable development is evident."</p>
+    </div>
+    <div class="press-item">
+      <div class="press-source">African Impact Challenge · 2026</div>
+      <p class="press-quote">Selected as part of the 2026 cohort — one of Africa's leading platforms for youth-led innovation in sustainable development.</p>
+    </div>
+    <div class="press-item">
+      <div class="press-source">ATAP Bauchi · 2024</div>
+      <p class="press-quote">Overall Best Graduating Student with First Class distinction — Abubakar Tatari Ali Polytechnic, Geology Department.</p>
+    </div>
+    <div class="press-item">
+      <div class="press-source">African Digital Health Summit · 2026</div>
+      <p class="press-quote">Research paper accepted for presentation — documenting the healthcare navigation gap revealed through the Tinder Health field research.</p>
+    </div>
+    <div class="press-item">
+      <div class="press-source">UNITAR / Renmin University · 2026</div>
+      <p class="press-quote">SDGs Youth Public Policy Innovation Challenge — submitted policy proposal on documenting and preserving undocumented living heritage communities in northern Nigeria.</p>
+    </div>
+    <div class="press-item">
+      <div class="press-source">Utrecht University · 2026</div>
+      <p class="press-quote">Applied to the Critical Pathways Autumn Fellowship — bringing KundiMap field documentation and the "Making Visible the Invisible" framework to a European research context.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label" style="justify-content:center;">Contact</div>
+  <h2>Let's <em>connect</em></h2>
+  <p class="contact-sub">Open to collaborations, conversations, and opportunities.</p>
+
+  <div class="contact-links">
+    <a href="mailto:abdulmuminm97@gmail.com" class="contact-link">
+      <span class="contact-link-label">Email</span>
+      <span class="contact-link-value">abdulmuminm97@gmail.com</span>
+    </a>
+    <a href="https://www.linkedin.com/in/musa-abdulmumin-6046032ba" target="_blank" class="contact-link">
+      <span class="contact-link-label">LinkedIn</span>
+      <span class="contact-link-value">musa-abdulmumin</span>
+    </a>
+    <a href="https://github.com/Mohfinest" target="_blank" class="contact-link">
+      <span class="contact-link-label">GitHub</span>
+      <span class="contact-link-value">Mohfinest</span>
+    </a>
+    <a href="https://drive.google.com/drive/folders/17uhWSPhbIbvojvldrR1ERYCkJBNgRF8F?usp=drive_link" target="_blank" class="contact-link">
+      <span class="contact-link-label">Portfolio</span>
+      <span class="contact-link-value">View Full Archive →</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Musa Abdulmumin</p>
+  <p>Suleja, Niger State · Nigeria</p>
+  <p>Built with intention.</p>
+</footer>
+
+<script>
+  /* ── SCROLL-TRIGGERED FADE-IN ── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll(
+    '.project-card, .story-item, .award-item, .press-item, .about-grid, .section-label, h2'
+  ).forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(28px)';
+    el.style.transition = `opacity 0.7s ease ${(i % 4) * 0.08}s, transform 0.7s ease ${(i % 4) * 0.08}s`;
+    observer.observe(el);
+  });
+
+  document.addEventListener('animationend', () => {}, { once: true });
+
+  /* ── ACTIVE NAV ── */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.style.opacity = '0.55';
+          link.style.color = '';
+        });
+        const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+        if (active) {
+          active.style.opacity = '1';
+          active.style.color = 'var(--clay)';
+        }
+      }
+    });
+  }, { threshold: 0.4 });
+
+  sections.forEach(s => navObserver.observe(s));
+
+  /* ── VISIBLE CLASS ── */
+  const style = document.createElement('style');
+  style.textContent = '.visible { opacity: 1 !important; transform: translateY(0) !important; }';
+  document.head.appendChild(style);
+
+  /* ── RECOGNITIONS SCROLL HINT ── */
+  const rec = document.querySelector('.recognitions');
+  if (rec) {
+    let hinted = false;
+    rec.addEventListener('mouseenter', () => {
+      if (!hinted && rec.scrollWidth > rec.clientWidth) {
+        rec.style.cursor = 'grab';
+      }
+    });
+    let isDown = false, startX, scrollLeft;
+    rec.addEventListener('mousedown', e => {
+      isDown = true;
+      rec.style.cursor = 'grabbing';
+      startX = e.pageX - rec.offsetLeft;
+      scrollLeft = rec.scrollLeft;
+    });
+    rec.addEventListener('mouseleave', () => { isDown = false; rec.style.cursor = 'grab'; });
+    rec.addEventListener('mouseup', () => { isDown = false; rec.style.cursor = 'grab'; });
+    rec.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - rec.offsetLeft;
+      rec.scrollLeft = scrollLeft - (x - startX) * 1.5;
+    });
+  }
+
+  /* ── SMOOTH NAV CLICK ── */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(anchor.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+
+</body>
+</html>
